@@ -1,0 +1,38 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='$PWD \$ '
+
+
+# Default editor
+EDITOR=/usr/bin/vim
+
+# Alias
+alias l="ls"
+alias ld="ls -d"
+alias la="ls -la"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Exporting path
+export PATH=$PATH:~/.vimpkg/bin
+
+
+# JetBrains
+export PATH=$PATH:/opt/WebStorm/bin
+export PATH=$PATH:/opt/CLion/bin
+
+# Yarn
+export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
+
+# CD and LS
+function c() {
+  cd "$@" && ls -F
+}

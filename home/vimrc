@@ -1,0 +1,54 @@
+execute pathogen#infect()
+call pathogen#helptags()
+
+" Tree file navigation
+map <C-n> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree
+
+" Theme
+colorscheme monokai
+
+" Show relative line numbers
+set number
+set relativenumber
+
+" Autoreload
+set autoread
+
+" Show line numbers by default
+set nu
+
+" Syntax on
+syntax on
+
+" Show whitespaces
+let g:indentLine_leadingSpaceChar = '␣'
+set listchars=trail:␣
+
+" Whitespaces instead of tabs
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+" Remove default screen
+set shortmess=I
+
+" Window navigation
+nmap <C-h> <C-w><C-h>
+nmap <C-j> <C-w><C-j>
+nmap <C-k> <C-w><C-k>
+nmap <C-l> <C-w><C-l>
+nmap <C-Left> <C-w><C-h>
+nmap <C-Down> <C-w><C-j>
+nmap <C-Up> <C-w><C-k>
+nmap <C-Right> <C-w><C-l>
+
+" Moving lines
+let g:move_key_modifier = 'C'
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+
+" Editor
+set cursorline
