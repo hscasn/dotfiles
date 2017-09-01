@@ -87,7 +87,8 @@ installApps() {
   # i3 and i3blocks
   if prompt "Install i3 and i3blocks?"
   then
-    sudo pacman -S i3 dmenu &&\
+    yaourt -S i3-gaps-git &&\
+    sudo pacman -S dmenu &&\
     yaourt -S i3blocks
   fi
 
@@ -202,7 +203,13 @@ echo "- Installing apps"
 installApps
 
 # Installing dot files and fonts
-echo "- Installing home dot files"
-installHome
-echo "- Installing fonts"
-installFonts
+if prompt "Install home dot files?"
+then
+  echo "- Installing home dot files"
+  installHome
+fi
+if prompt "Install fonts?"
+then
+  echo "- Installing fonts"
+  installFonts
+fi
