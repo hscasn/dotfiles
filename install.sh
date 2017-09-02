@@ -99,6 +99,12 @@ installApps() {
     sudo pacman -S base-devel wget file abs
   fi
 
+  # ACPI
+  if prompt "Install ACPI (for laptop battery)?"
+  then
+    sudo pacman -S acpi
+  fi
+
   # Transmission
   if prompt "Install Transmission?"
   then
@@ -207,30 +213,30 @@ installApps() {
 
 # Installs packages for vim
 installVimPackages() {
-  if [ ! -e ~/.vim/bundle ]
+  VIMBUNDLE=~/.vim/bundle
+  if [ ! -e $VIMBUNDLE ]
   then
-    sudo mkdir ~/.vim/bundle
+    sudo mkdir $VIMBUNDLE
   fi
-  sudo cd ~/.vim/bundle
 
   # NERD TREE
   apt-vim install -y https://github.com/scrooloose/nerdtree.git
-  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git
+  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE
 
   # Nerd Tree
   apt-vim install -y https://github.com/scrooloose/nerdtree.git
 
   # Colour schemes
-  sudo git submodule add https://github.com/flazz/vim-colorschemes.git bundle/colorschemes
+  sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/colorschemes
 
   # Set colors
-  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors
+  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors $VIMBUNDLE
 
   # Indentation
-  sudo git clone https://github.com/Yggdroot/indentLine
+  sudo git clone https://github.com/Yggdroot/indentLine $VIMBUNDLE
 
   # Syntax
-  sudo git clone https://github.com/sheerun/vim-polyglot
+  sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE
 
   # Move lines
   apt-vim install https://github.com/matze/vim-move.git
