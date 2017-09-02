@@ -51,7 +51,7 @@ installHome() {
 
 # Installs the fonts
 installFonts() {
-  cp -r "./fonts/*" "/usr/share/fonts"
+  cp -r fonts/* "/usr/share/fonts"
   if [ $? = 0 ]
   then
     echo "  OK - Fonts installed"
