@@ -44,7 +44,6 @@ installHome() {
   do
     oldFilePath="./home/$file"
     newFilePath="$HOME/.$file"
-    delete "$newFilePath"
     copy "$oldFilePath" "$newFilePath"
   done
 }
