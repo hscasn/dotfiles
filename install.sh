@@ -118,6 +118,12 @@ installApps() {
     yaourt -S jdk-devel jre-devel
   fi
 
+  # APT-VIM
+  if prompt "Install APT-VIM?"
+  then
+    curl -sL https://raw.githubusercontent.com/egalpin/apt-vim/master/install.sh | sh
+  fi
+
   # node
   if prompt "Install node?"
   then
@@ -199,6 +205,37 @@ installApps() {
   fi
 }
 
+# Installs packages for vim
+installVimPackages() {
+  if [ ! -e ~/.vim/bundle ]
+  then
+    sudo mkdir ~/.vim/bundle
+  fi
+  sudo cd ~/.vim/bundle
+
+  # NERD TREE
+  apt-vim install -y https://github.com/scrooloose/nerdtree.git
+  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git
+
+  # Nerd Tree
+  apt-vim install -y https://github.com/scrooloose/nerdtree.git
+
+  # Colour schemes
+  sudo git submodule add https://github.com/flazz/vim-colorschemes.git bundle/colorschemes
+
+  # Set colors
+  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors
+
+  # Indentation
+  sudo git clone https://github.com/Yggdroot/indentLine
+
+  # Syntax
+  sudo git clone https://github.com/sheerun/vim-polyglot
+
+  # Move lines
+  apt-vim install https://github.com/matze/vim-move.git
+}
+
 # Installing apps
 if prompt "Install apps?"
 then
@@ -206,12 +243,21 @@ then
   installApps
 fi
 
-# Installing dot files and fonts
+# Installing dot files
 if prompt "Install home dot files?"
 then
   echo "- Installing home dot files"
   installHome
 fi
+
+# Installing VIM packages
+if prompt "Install VIM packages?"
+then
+  echo "- installing vim packages"
+  installVimPackages
+fi
+
+# Installing fonts
 if prompt "Install fonts?"
 then
   echo "- Installing fonts"
