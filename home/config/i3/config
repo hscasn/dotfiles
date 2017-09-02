@@ -9,6 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Mod1 = Alt
+# Mod4 = Windows
 set $mod Mod1
 
 ###############################################################################
