@@ -221,22 +221,22 @@ installVimPackages() {
 
   # NERD TREE
   apt-vim install -y https://github.com/scrooloose/nerdtree.git
-  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE
+  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE/vim-nerdtree-tabs
 
   # Nerd Tree
   apt-vim install -y https://github.com/scrooloose/nerdtree.git
 
   # Colour schemes
-  sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/colorschemes
+  sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/vim-colorschemes
 
   # Set colors
-  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors $VIMBUNDLE
+  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors $VIMBUNDLE/setcolors.vim
 
   # Indentation
-  sudo git clone https://github.com/Yggdroot/indentLine $VIMBUNDLE
+  sudo git clone https://github.com/Yggdroot/indentLine $VIMBUNDLE/indentLine
 
   # Syntax
-  sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE
+  sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE/vim-polyglot
 
   # Move lines
   apt-vim install https://github.com/matze/vim-move.git
