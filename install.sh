@@ -10,7 +10,7 @@ delete() {
   if [ -e $1 ]
   then
     rm -rf "$1"
-    if $?
+    if [ $? = 0 ]
     then
       echo "  OK - Deleted file $1"
     else
@@ -30,7 +30,7 @@ copy() {
     exit 1
   fi
   cp -r "$1" "$2"
-  if $?
+  if [ $? = 0 ]
   then
     echo "  OK - Copied $1 to $2"
   else
@@ -52,7 +52,7 @@ installHome() {
 # Installs the fonts
 installFonts() {
   cp -r "./fonts/*" "/usr/share/fonts"
-  if $?
+  if [ $? = 0 ]
   then
     echo "  OK - Fonts installed"
   else
