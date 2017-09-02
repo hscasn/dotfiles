@@ -68,6 +68,7 @@ prompt() {
     exit 1
   fi
   read -rn1 -p "$1 (Y/n)"
+  echo ""
   if [[ $REPLY =~ [yY] ]]
   then
     return 0
@@ -199,8 +200,11 @@ installApps() {
 }
 
 # Installing apps
-echo "- Installing apps"
-installApps
+if prompt "Install apps?"
+then
+  echo "- Installing apps"
+  installApps
+fi
 
 # Installing dot files and fonts
 if prompt "Install home dot files?"
