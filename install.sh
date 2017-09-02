@@ -80,11 +80,11 @@ installApps() {
   # AUR
   if prompt "Install AUR?"
   then
-    sudo pacman -S yaourt &&\
+    sudo pacman -S yaourt rofi &&\
     yaourt -Syy # Syncing
   fi
 
-  # i3 and i3blocks
+  # i3, rofi, and i3blocks
   if prompt "Install i3 and i3blocks?"
   then
     yaourt -S i3-gaps-git &&\
@@ -219,11 +219,11 @@ installVimPackages() {
   fi
 
   # NERD TREE
-  apt-vim install -y https://github.com/scrooloose/nerdtree.git
+  ~/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
   sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE/vim-nerdtree-tabs
 
   # Nerd Tree
-  apt-vim install -y https://github.com/scrooloose/nerdtree.git
+  ~/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
 
   # Colour schemes
   sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/vim-colorschemes
@@ -238,7 +238,7 @@ installVimPackages() {
   sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE/vim-polyglot
 
   # Move lines
-  apt-vim install https://github.com/matze/vim-move.git
+  ~/.vimpkg/bin/apt-vim install https://github.com/matze/vim-move.git
 }
 
 # Installing apps
