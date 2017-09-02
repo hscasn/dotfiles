@@ -93,7 +93,7 @@ installApps() {
   if prompt "Install i3 and i3blocks?"
   then
     yaourt -S i3-gaps-git &&\
-    sudo pacman -S dmenu &&\
+    sudo pacman -S dmenu i3lock &&\
     yaourt -S i3blocks
   fi
 
