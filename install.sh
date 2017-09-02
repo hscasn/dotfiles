@@ -90,10 +90,10 @@ installApps() {
   fi
 
   # i3, rofi, and i3blocks
-  if prompt "Install i3 and i3blocks?"
+  if prompt "Install i3 and tools?"
   then
-    yaourt -S i3-gaps-git &&\
-    sudo pacman -S dmenu i3lock &&\
+    yaourt -S i3-gaps-next-git &&\
+    sudo pacman -S dmenu i3lock compton feh &&\
     yaourt -S i3blocks
   fi
 
