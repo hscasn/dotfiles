@@ -29,7 +29,12 @@ copy() {
     echo "Usage for copy function: copy <file> <file>"
     exit 1
   fi
-  cp -r "$1" "$2"
+  if [ -d "$2" ]
+  then
+    cp -r "$1"/* "$2"
+  else
+    cp -r "$1" "$2"
+  fi
   if [ $? = 0 ]
   then
     echo "  OK - Copied $1 to $2"
@@ -50,7 +55,7 @@ installHome() {
 
 # Installs the fonts
 installFonts() {
-  cp -r fonts/* "/usr/share/fonts"
+  sudo cp -r fonts/* "/usr/share/fonts"
   if [ $? = 0 ]
   then
     echo "  OK - Fonts installed"
@@ -217,13 +222,14 @@ installVimPackages() {
   then
     sudo mkdir $VIMBUNDLE
   fi
+  PATH=$PATH:$HOME/.vimpkg/bin
 
   # NERD TREE
-  ~/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
+  $HOME/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
   sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE/vim-nerdtree-tabs
 
   # Nerd Tree
-  ~/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
+  $HOME/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
 
   # Colour schemes
   sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/vim-colorschemes
@@ -238,7 +244,7 @@ installVimPackages() {
   sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE/vim-polyglot
 
   # Move lines
-  ~/.vimpkg/bin/apt-vim install https://github.com/matze/vim-move.git
+  $HOME/.vimpkg/bin/apt-vim install https://github.com/matze/vim-move.git
 }
 
 # Installing apps
