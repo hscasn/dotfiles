@@ -103,6 +103,12 @@ installApps() {
     sudo pacman -S base-devel wget file abs
   fi
 
+  # Telegram
+  if prompt "Install Telegram?"
+  then
+    yaourt -S telegram-desktop-bin
+  fi
+
   # ACPI
   if prompt "Install ACPI (for laptop battery)?"
   then
