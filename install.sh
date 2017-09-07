@@ -109,6 +109,12 @@ installApps() {
     yaourt -S telegram-desktop-bin
   fi
 
+  # facebook
+  if prompt "Install messenger for desktop?"
+  then
+    yaourt -S messengerfordesktop-git
+  fi
+
   # ACPI
   if prompt "Install ACPI (for laptop battery)?"
   then
