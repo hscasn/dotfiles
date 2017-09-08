@@ -64,6 +64,17 @@ installFonts() {
   fi
 }
 
+# Installs misc files
+installMisc() {
+  sudo cp misc/mirrorlist "/etc/pacman.d/mirrorlist"
+  if [ $? = 0 ]
+  then
+    echo "  OK - Mirror list installed"
+  else
+    exit 1
+  fi
+}
+
 # Prompts the user for y or n - returns 0 for yes, 1 for n
 prompt() {
   if [ ! $# = 1 ]
@@ -285,4 +296,11 @@ if prompt "Install fonts?"
 then
   echo "- Installing fonts"
   installFonts
+fi
+
+# Installing misc
+if prompt "Install misc files?"
+then
+  echo "- Installing misc files"
+  installMisc
 fi

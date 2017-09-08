@@ -12,3 +12,6 @@
   to /usr/share/fonts
 - The "bundle" directory in .vim and .vimpkg should
   stay the same if you install more packages
+- New files in "misc" must be configured in the install.sh
+  file - the script doesnt know where they should be
+  installed by default
