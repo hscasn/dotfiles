@@ -243,16 +243,17 @@ set $workspace18 " 18: "
 set $workspace19 " 19: "
 set $workspace20 " 20: "
 
-set $KP_1 87
-set $KP_2 88
-set $KP_3 89
-set $KP_4 83
-set $KP_5 84
-set $KP_6 85
-set $KP_7 79
-set $KP_8 80
-set $KP_9 81
-set $KP_0 82
+# Sometimes Mod2+num will be required for it to work
+set $KP_1 Mod2+87
+set $KP_2 Mod2+88
+set $KP_3 Mod2+89
+set $KP_4 Mod2+83
+set $KP_5 Mod2+84
+set $KP_6 Mod2+85
+set $KP_7 Mod2+79
+set $KP_8 Mod2+80
+set $KP_9 Mod2+81
+set $KP_0 Mod2+90
 
 ## switch to workspace
 bindsym $mod+1 workspace $workspace1
