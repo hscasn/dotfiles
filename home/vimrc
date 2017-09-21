@@ -50,5 +50,8 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
+" Tab character
+inoremap <S-Tab> <C-V><Tab>
+
 " Editor
 set cursorline
