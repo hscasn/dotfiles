@@ -114,6 +114,18 @@ installApps() {
     sudo pacman -S base-devel wget file abs
   fi
 
+  # Arch Keyring
+  if prompt "Install Arch Keyring?"
+  then
+    sudo pacman -S archlinux-keyring
+  fi
+
+  # PHP + Apache
+  if prompt "Install php and apache?"
+  then
+    sudo pacman -S apache php php-apache
+  fi
+
   # Telegram
   if prompt "Install Telegram?"
   then
