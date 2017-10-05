@@ -26,9 +26,10 @@ export PATH=$PATH:~/.vimpkg/bin
 
 
 # JetBrains
-export PATH=$PATH:/opt/WebStorm/bin
+export PATH=$PATH:/opt/webstorm/bin
 export PATH=$PATH:/opt/phpstorm/bin
-export PATH=$PATH:/opt/CLion/bin
+export PATH=$PATH:/opt/clion/bin
+export PATH=$PATH:/opt/rider/bin
 
 # Yarn
 export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
