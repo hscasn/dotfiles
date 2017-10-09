@@ -27,8 +27,9 @@ export PATH=$PATH:~/.vimpkg/bin
 
 # JetBrains
 export PATH=$PATH:/opt/WebStorm/bin
-export PATH=$PATH:/opt/phpstorm/bin
 export PATH=$PATH:/opt/CLion/bin
+export PATH=$PATH:/opt/pycharm/bin
+export PATH=$PATH:/opt/phpstorm/bin
 
 # Yarn
 export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
@@ -37,3 +38,15 @@ export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 function c() {
   cd "$@" && ls -F
 }
+
+# CD recording last path
+function cd() {
+  builtin cd "$@"
+  pwd > ~/.lastdir
+}
+
+# Returning to last dir
+if [ -f ~/.lastdir ];
+then
+  cd "$(cat ~/.lastdir)"
+fi

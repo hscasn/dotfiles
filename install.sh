@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo "------------------------------"
+echo "To disable Ctrl+Alt+Backspace from killing X11:"
+echo "$ cd /etc/X11/xorg.conf.d"
+echo "Edit 99-killX.conf, ensure that DontZap === yes"
+echo "Section \"ServerFlags\""
+echo "    Option \"DontZap\" \"yes\""
+echo "EndSection"
+echo "------------------------------"
+
 # Used to delete a file
 delete() {
   if [ ! $# = 1 ]
