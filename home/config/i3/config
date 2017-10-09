@@ -181,11 +181,12 @@ bindsym $mod+z exec setxkbmap us -variant intl
 
 # STARTUP
 #------------------------------------------------------------------------------
-## Wallpaper
 exec_always feh --bg-scale /home/hscasn/Gdrive/Pictures/Wallpapers/curr.jpg 
 exec xrandr --output DVI-0 --left-of DVI-1
 exec insync start
 exec compton
+exec nm-applet
+exec NetworkManager
 
 # Pulse Audio controls
 #------------------------------------------------------------------------------
