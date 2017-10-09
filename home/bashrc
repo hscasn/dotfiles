@@ -56,6 +56,7 @@ function wow() {
   else
     echo "Usage: wow <commit message> <branch>"
     echo "       wow (will use 'wow' as commit message and push to master)"
+    exit 1
   fi
 }
 
