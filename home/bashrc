@@ -47,7 +47,16 @@ function cd() {
 
 # wow!
 function wow() {
-  git add . && git commit -m "$1" && git push origin "$2"
+  if [[ $# == 0 ]]
+  then
+    git add . && git commit -m "wow" && git push origin master
+  elif [[ $# == 2 ]]
+  then
+    git add . && git commit -m "$1" && git push origin "$2"
+  else
+    echo "Usage: wow <commit message> <branch>"
+    echo "       wow (will use 'wow' as commit message and push to master)"
+  fi
 }
 
 # Returning to last dir
