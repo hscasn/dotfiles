@@ -153,9 +153,9 @@ bar {
     statusline $p_dark$tr_l
 
 #                      BORDER        BACKGROUND    TEXT     INDICATOR CHILD_BORDER
-    focused_workspace  $p_dark$tr_m  $s_light$tr_m $p_light
-    active_workspace   $p_dark$tr_m  $s_dark$tr_m  $p_light
-    inactive_workspace $p_dark$tr_m  $p_dark$tr_m  $p_light
+    focused_workspace  $p_dark$tr_m  $s_dark$tr_m  $p_light
+    active_workspace   $p_light$tr_h $s_light$tr_h $p_light
+    inactive_workspace $p_light$tr_h $p_light$tr_h $p_light
     urgent_workspace   $p_dark$tr_m  $p_alert$tr_l $p_light
   }
 }
