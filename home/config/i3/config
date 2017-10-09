@@ -186,8 +186,6 @@ exec_always feh --bg-scale /home/hscasn/Gdrive/Pictures/Wallpapers/curr.jpg
 exec xrandr --output DVI-0 --left-of DVI-1
 exec insync start
 exec compton
-# Mount and unmounting disks
-exec --no-startup-id "devmon --no-gui"
 
 # Pulse Audio controls
 #------------------------------------------------------------------------------
