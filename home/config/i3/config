@@ -4,8 +4,8 @@
 set $mod Mod1
 
 # Gaps size
-gaps inner 8
-gaps outer 2
+gaps inner 10
+gaps outer 0
 
 # For custom media keys, download playerctl:
 # https://github.com/acrisci/playerctl/releases
@@ -148,8 +148,8 @@ bar {
   separator_symbol ":|:"
   tray_padding 0
   colors {
-    separator  $p_dark$tr_m
-    background $p_dark$tr_m
+    separator  $p_dark$tr_h
+    background $p_dark$tr_h
     statusline $p_dark$tr_l
 
 #                      BORDER        BACKGROUND    TEXT     INDICATOR CHILD_BORDER
