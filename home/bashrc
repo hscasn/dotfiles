@@ -26,10 +26,10 @@ export PATH=$PATH:~/.vimpkg/bin
 
 
 # JetBrains
-export PATH=$PATH:/opt/webstorm/bin
+export PATH=$PATH:/opt/WebStorm/bin
+export PATH=$PATH:/opt/CLion/bin
+export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
-export PATH=$PATH:/opt/clion/bin
-export PATH=$PATH:/opt/rider/bin
 
 # Yarn
 export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
@@ -43,6 +43,11 @@ function c() {
 function cd() {
   builtin cd "$@"
   pwd > ~/.lastdir
+}
+
+# wow!
+function wow() {
+  git add . && git commit -m "$1" && git push origin "$2"
 }
 
 # Returning to last dir
