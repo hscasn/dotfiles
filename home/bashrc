@@ -26,8 +26,9 @@ export PATH=$PATH:~/.vimpkg/bin
 
 
 # JetBrains
-export PATH=$PATH:/opt/WebStorm/bin
-export PATH=$PATH:/opt/CLion/bin
+export PATH=$PATH:/opt/webstorm/bin
+export PATH=$PATH:/opt/clion/bin
+export PATH=$PATH:/opt/rider/bin
 export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
 
