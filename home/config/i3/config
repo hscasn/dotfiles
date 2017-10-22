@@ -184,6 +184,7 @@ bindsym $mod+z exec setxkbmap us -variant intl
 exec_always feh --bg-scale /home/hscasn/Gdrive/Pictures/Wallpapers/curr.jpg 
 exec xrandr --output DVI-0 --left-of DVI-1
 exec insync start
+exec redshift
 exec compton
 exec nm-applet
 exec NetworkManager

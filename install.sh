@@ -129,6 +129,12 @@ installApps() {
     sudo pacman -S archlinux-keyring
   fi
 
+  # Redshift
+  if prompt "Install Redshift?"
+  then
+    sudo pacman -S redshift
+  fi
+
   # PHP + Apache
   if prompt "Install php and apache?"
   then
