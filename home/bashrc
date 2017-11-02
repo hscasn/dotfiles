@@ -46,6 +46,11 @@ function cd() {
   pwd > ~/.lastdir
 }
 
+# Record this path
+function sd() {
+  pwd > ~/.lastdir
+}
+
 # wow!
 function wow() {
   if [[ $# == 0 ]]
