@@ -56,18 +56,25 @@ bindsym $mod+Shift+q kill
 bindsym F9  exec rofi -show run
 bindsym F10 exec rofi -show window
 
-
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+Ctrl+j focus left
+bindsym $mod+Ctrl+k focus down
+bindsym $mod+Ctrl+l focus up
+bindsym $mod+Ctrl+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Ctrl+Left focus left
+bindsym $mod+Ctrl+Down focus down
+bindsym $mod+Ctrl+Up focus up
+bindsym $mod+Ctrl+Right focus right
+
+# change focus
+bindsym $mod+j workspace prev
+bindsym $mod+semicolon workspace next
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
 
 # move focused window
 bindsym $mod+Shift+j move left
