@@ -35,6 +35,9 @@ export PATH=$PATH:/opt/phpstorm/bin
 # Yarn
 export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 
+# Local
+export PATH=$PATH:~/.local/bin
+
 # CD and LS
 function c() {
   cd "$@" && ls -F
