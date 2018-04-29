@@ -204,6 +204,12 @@ installApps() {
     pacaur -S sublime-text-dev
   fi
 
+  # VSCode
+  if prompt "Install VSCode?"
+  then
+    pacaur -S visual-studio-code-bin
+  fi
+
   # insync
   if prompt "Install insync?"
   then
