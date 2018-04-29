@@ -165,6 +165,12 @@ installApps() {
     sudo pacman -S transmission-gtk
   fi
 
+  # Thunderbird
+  if prompt "Install Thunderbird?"
+  then
+    sudo pacman -S thunderbird
+  fi
+
   # Sensors
   if prompt "Install Sensors?"
   then
@@ -195,7 +201,7 @@ installApps() {
   # Sublime
   if prompt "Install Sublime?"
   then
-    pacaur -S sublime-text
+    pacaur -S sublime-text-dev
   fi
 
   # insync
@@ -223,10 +229,10 @@ installApps() {
   fi
 
   # Nautilus
-  if prompt "Install Nautilus?"
-  then
-    sudo pacman -S nautilus
-  fi
+  #if prompt "Install Nautilus?"
+  #then
+  #  sudo pacman -S nautilus
+  #fi
 
   # Scrot
   if prompt "Install Scrot?"
@@ -241,7 +247,7 @@ installApps() {
   fi
 
   # Music
-  if prompt "Install Music?"
+  if prompt "Install Spotify?"
   then
     pacaur -S spotify
   fi

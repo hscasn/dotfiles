@@ -40,7 +40,7 @@ font pango:System San Francisco Regular 10
 
 # Terminal
 #------------------------------------------------------------------------------
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec mate-terminal
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -354,8 +354,8 @@ bindcode $mod+Shift+Ctrl+$KP_0 move container to workspace $workspace20
 # Forcing programs to start in the right workspace
 # Use xprop to get class
 #------------------------------------------------------------------------------
-assign [class="Spotify"] $workspace20
-assign [class="Geary"] $workspace19
+for_window [class="Spotify"] move to workspace $workspace20
+assign [class="Thunderbird"] $workspace19
 assign [class="TelegramDesktop"] $workspace18
 assign [class="Steam"] $workspace18
 
