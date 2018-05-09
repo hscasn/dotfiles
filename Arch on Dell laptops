@@ -1,0 +1,9 @@
+If having problems with Nouveau:
+
+Hit "e" on boot menu
+- modprobe.blacklist=nouveau
+- nomodeset
+- nomodeset=0, nouveau.modeset=0
+- xdriver=intel
+
+sudo pacman -R nouveau
