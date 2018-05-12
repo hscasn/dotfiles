@@ -13,22 +13,11 @@ function parse_git_branch() {
 
 export PS1="\w\[\e[96m\]\$(parse_git_branch)\[\e[0m\] > "
 
-
 # Default editor
 EDITOR=/usr/bin/vim
 
-# Alias
-alias l="ls"
-alias ld="ls -d"
-alias la="ls -la"
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
 # Exporting path
 export PATH=$PATH:~/.vimpkg/bin
-
 
 # JetBrains
 export PATH=$PATH:/opt/webstorm/bin
@@ -43,21 +32,61 @@ export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 # Local
 export PATH=$PATH:~/.local/bin
 
-# CD and LS
-function c() {
+# Dirs
+function c() { # CD + LS
   cd "$@" && ls -F
 }
-
-# CD recording last path
-function cd() {
+function cd() { # CD recording path
   builtin cd "$@"
+  dsp
+  sd
+}
+function sd() { # Record path
   pwd > ~/.lastdir
 }
-
-# Record this path
-function sd() {
-  pwd > ~/.lastdir
+declare -a __DIRHISTORY=()
+function ds() { # Show directory stack / pull from dir stack
+    if [ ${#} -lt 1 ]; then
+        local C=0
+        for DIR in "${__DIRHISTORY[@]}"; do
+            echo -e "\e[96m${C}\e[0m ${DIR}"
+            C=$(( ${C} + 1 ))
+        done
+    elif [ ${1} -ge 0 ] && [ ${1} -lt ${#__DIRHISTORY[@]} ]; then
+        c "${__DIRHISTORY[${1}]}"
+    elif [ ${1} -eq 0 ]; then
+        echo "Stack empty"
+        exit 1
+    else
+        echo "Bad index"
+        exit 1
+    fi
 }
+function dsp() { # Push to dir history
+    local PW=$(pwd)
+    for DIR in "${__DIRHISTORY[@]}"; do
+        if [ "${PW}" == "${DIR}" ]; then
+            return;
+        fi
+    done
+    __DIRHISTORY=("${__DIRHISTORY[@]}" "${PW}")
+}
+function dsr() { # Remove dir history (may remove several)
+    if [ ${#} -lt 1 ]; then
+        echo "Not enough arguments"
+        exit 1
+    fi
+    while [ ${#} -gt 0 ]; do
+        unset __DIRHISTORY[${1}]
+        shift
+    done
+}
+alias l="ls"
+alias ld="ls -d"
+alias la="ls -la"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # wow!
 function wow() {
