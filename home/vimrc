@@ -5,7 +5,7 @@ call pathogen#helptags()
 map <F2> :NERDTreeToggle<CR>
 
 " Theme
-" colorscheme monokai
+colorscheme monokai
 
 " Show relative line numbers
 set number
