@@ -2,11 +2,10 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 " Tree file navigation
-map <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree
+map <F2> :NERDTreeToggle<CR>
 
 " Theme
-colorscheme monokai
+" colorscheme monokai
 
 " Show relative line numbers
 set number
