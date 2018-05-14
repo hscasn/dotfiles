@@ -1,7 +1,7 @@
 
 # Mod1 = Alt
 # Mod4 = Windows
-set $mod Mod1
+set $mod Mod4
 
 # Gaps size
 gaps inner 10
@@ -199,9 +199,12 @@ bindsym $mod+z exec setxkbmap us -variant intl
 
 # STARTUP
 #------------------------------------------------------------------------------
-exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg 
-exec_always xrandr --output HDMI1 --rotate left --pos 0x0
+exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg
+exec_always xrandr --output DP2 --off
+exec_always xrandr --output eDP1 --auto
+exec_always xrandr --output HDMI1 --left-of DP2 --pos 0x0
 exec_always xrandr --output eDP1 --pos 1080x400 --scale 0.5x0.5
+exec_always xrandr --output DP2 --auto
 exec_always xrandr --output DP2 --same-as eDP1
 exec insync start
 exec redshift
