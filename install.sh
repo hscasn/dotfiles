@@ -105,14 +105,14 @@ installApps() {
   # AUR
   if prompt "Install AUR?"
   then
-    sudo pacman -S pacaur rofi &&\
+    sudo pacman -S pacaur &&\
     pacaur -Syy # Syncing
   fi
 
   # i3, rofi, and i3blocks
   if prompt "Install i3 and tools?"
   then
-    pacaur -S i3-gaps-next-git &&\
+    pacaur -S i3-gaps-next-git rofi &&\
     sudo pacman -S dmenu i3lock compton feh &&\
     pacaur -S i3blocks
   fi
