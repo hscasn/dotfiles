@@ -13,7 +13,7 @@
             "--require",
             "${workspaceFolder}/node_modules/ts-node/register",
             "--colors",
-            "${workspaceFolder}/test/**.test.ts"
+            "${workspaceFolder}/test/**/*.test.ts"
         ],
         "console": "integratedTerminal",
         "internalConsoleOptions": "openOnSessionStart",
