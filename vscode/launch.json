@@ -50,6 +50,18 @@
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
         "envFile": "${workspaceFolder}/.vscode/env"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug Src Index",
+        "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+        "args": [
+            "${workspaceFolder}/src/index.ts"
+        ],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "envFile": "${workspaceFolder}/.vscode/env"
     }
   ]
 }
