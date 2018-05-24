@@ -105,16 +105,16 @@ installApps() {
   # AUR
   if prompt "Install AUR?"
   then
-    sudo pacman -S pacaur &&\
-    pacaur -Syy # Syncing
+    sudo pacman -S yaourt &&\
+    yaourt -Syy # Syncing
   fi
 
   # i3, rofi, and i3blocks
   if prompt "Install i3 and tools?"
   then
-    pacaur -S i3-gaps-next-git rofi &&\
+    yaourt -S i3-gaps-next-git rofi &&\
     sudo pacman -S dmenu i3lock compton feh &&\
-    pacaur -S i3blocks
+    yaourt -S i3blocks
   fi
 
   # Essentials
@@ -144,13 +144,13 @@ installApps() {
   # Telegram
   if prompt "Install Telegram?"
   then
-    pacaur -S telegram-desktop-bin
+    yaourt -S telegram-desktop-bin
   fi
 
   # facebook
   if prompt "Install messenger for desktop?"
   then
-    pacaur -S messengerfordesktop-git
+    yaourt -S messengerfordesktop-git
   fi
 
   # ACPI
@@ -181,7 +181,7 @@ installApps() {
   if prompt "Install Java?"
   then
     sudo pacman -S java-runtime-common java-environment-common &&\
-    pacaur -S jdk-devel jre-devel
+    yaourt -S jdk-devel jre-devel
   fi
 
   # APT-VIM
@@ -201,25 +201,25 @@ installApps() {
   # Sublime
   if prompt "Install Sublime?"
   then
-    pacaur -S sublime-text-dev
+    yaourt -S sublime-text-dev
   fi
 
   # VSCode
   if prompt "Install VSCode?"
   then
-    pacaur -S visual-studio-code-bin
+    yaourt -S visual-studio-code-bin
   fi
 
   # insync
   if prompt "Install insync?"
   then
-    pacaur -S insync
+    yaourt -S insync
   fi
 
   # VLC
   if prompt "Install VLC?"
   then
-    pacaur -S vlc-git
+    yaourt -S vlc-git
   fi
 
   # PDF viewer
@@ -255,7 +255,7 @@ installApps() {
   # Music
   if prompt "Install Spotify?"
   then
-    pacaur -S spotify
+    yaourt -S spotify
   fi
 
   # Docker

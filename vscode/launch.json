@@ -62,13 +62,15 @@
         ],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
-        "envFile": "${workspaceFolder}/.vscode/test_local"
+        "envFile": "${workspaceFolder}/.vscode/env"
     },
     {
         "type": "node",
         "request": "launch",
-        "name": "Debug Index JS",
-        "program": "${workspaceFolder}/index.js",
+        "name": "Debug Dist Index",
+        "args": [
+            "${workspaceFolder}/dist/index.js"
+        ],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen",
         "envFile": "${workspaceFolder}/.vscode/env"
