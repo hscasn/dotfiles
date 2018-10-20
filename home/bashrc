@@ -91,20 +91,24 @@ function dsr() { # Remove dir history (may remove several, removes all if no arg
     done
     printf "%s\n" "${__DIRHISTORY[@]}" > ~/.dirstack
 }
+
+# Shortcuts
 alias l="ls"
 alias ld="ls -d"
 alias la="ls -la"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias ni="npm install"
+alias gd="git pull"
+alias gu="git push"
+alias gc="git commit -m"
 
 # wow!
 function wow() {
-  if [[ $# == 0 ]]
-  then
-    git add . && git commit -m "wow" && git push origin master
-  elif [[ $# == 2 ]]
-  then
+  if [[ $# == 2 ]]; then
     git add . && git commit -m "$1" && git push origin "$2"
   else
     echo "Usage: wow <commit message> <branch>"
@@ -114,7 +118,7 @@ function wow() {
 }
 
 # Returning to last dir
-if [ -f ~/.lastdir ];
-then
+if [ -f ~/.lastdir ]; then
   cd "$(cat ~/.lastdir)"
 fi
+
