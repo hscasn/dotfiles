@@ -26,9 +26,6 @@ export PATH=$PATH:/opt/rider/bin
 export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
 
-# Yarn
-export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
-
 # Local
 export PATH=$PATH:~/.local/bin
 
@@ -152,4 +149,6 @@ function getEsStatus() {
   for pod in $(kubectl get pods | grep elasticsearch-recommendations | awk '{print $1}'); do echo ${pod}; kubectl exec -it ${pod} -- curl local    host:9200/_cat/health; done
 }
 
-. ~/.bashrc.work
+if [ -f ~/.bashrc.work ]; then
+    . ~/.bashrc.work
+fi
