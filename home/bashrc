@@ -26,9 +26,6 @@ export PATH=$PATH:/opt/rider/bin
 export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
 
-# Yarn
-export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
-
 # Local
 export PATH=$PATH:~/.local/bin
 
@@ -122,3 +119,36 @@ if [ -f ~/.lastdir ]; then
   cd "$(cat ~/.lastdir)"
 fi
 
+setNamespace () { CONTEXT=$(kubectl config view | awk '/current-context/ {print $2}'); kubectl config set-context $CONTEXT --namespace=$1;}
+alias klog="kubectl logs -f"
+alias kdes="kubectl describe pod"
+alias kget="kubectl config get-contexts | grep wisdom"
+alias kuse="kubectl config use-context"
+alias kwatch="watch -n 1 'kubectl get pods'"
+alias kwatchp="watch -n 1 'kubectl get pods | grep -v Running'"
+alias kpod="kubectl get pods"
+alias knode="kubectl get nodes"
+alias kdep="kubectl get deployment"
+function kscale() {
+  local PODN=${1}
+  local PODR=${2}
+  if [ $# != 2 ]; then
+    echo "Usage: kscale <service> <number of replicas>. Eg: kscale event-tracker-v2 0"
+    exit 1
+  fi
+  echo "Scaling ${PODN} to ${PODR}"
+  kubectl scale --replicas=${PODR} deploy ${PODN}
+}
+function kver() {
+  local PODN=${1}
+  for POD in $(kubectl get pods | grep ${PODN} | awk '{print $1}'); do
+    kubectl describe pod ${POD} | grep 'Image:'
+  done
+}
+function getEsStatus() {
+  for pod in $(kubectl get pods | grep elasticsearch-recommendations | awk '{print $1}'); do echo ${pod}; kubectl exec -it ${pod} -- curl local    host:9200/_cat/health; done
+}
+
+if [ -f ~/.bashrc.work ]; then
+    . ~/.bashrc.work
+fi

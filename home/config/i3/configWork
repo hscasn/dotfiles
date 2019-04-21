@@ -199,8 +199,8 @@ bindsym $mod+z exec setxkbmap us -variant intl
 
 # STARTUP
 #------------------------------------------------------------------------------
-exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg
-exec_always xrandr --output HDMI1 --auto --output eDP1 --auto --output DP2 --auto --output HDMI1 --rotate left --left-of eDP1 --pos 0x0 --output eDP1 --right-of HDMI1 --output DP2 --same-as eDP1
+exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg 
+exec_always xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 1080x1080 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate left --output DP2 --primary --mode 1920x1080 --pos 1080x0 --rotate normal
 exec insync start
 exec redshift
 exec compton
