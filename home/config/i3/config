@@ -24,7 +24,7 @@ gaps outer 0
 
 # Fonts
 #------------------------------------------------------------------------------
-font pango:System San Francisco Regular 12
+font pango:System San Francisco Regular 11
 
 
 # Terminal
