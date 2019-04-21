@@ -123,6 +123,18 @@ installApps() {
     sudo pacman -S base-devel wget file abs
   fi
 
+  # Pakku
+  if prompt "Install Pakku?"
+  then
+    yaourt -S pakku
+  fi
+
+  # Python
+  if prompt "Install Python?"
+  then
+    yaourt -S python python-pip
+  fi
+
   # Arch Keyring
   if prompt "Install Arch Keyring?"
   then
@@ -135,22 +147,10 @@ installApps() {
     sudo pacman -S redshift
   fi
 
-  # PHP + Apache
-  if prompt "Install php and apache?"
-  then
-    sudo pacman -S apache php php-apache
-  fi
-
   # Telegram
   if prompt "Install Telegram?"
   then
     yaourt -S telegram-desktop-bin
-  fi
-
-  # facebook
-  if prompt "Install messenger for desktop?"
-  then
-    yaourt -S messengerfordesktop-git
   fi
 
   # ACPI
@@ -234,22 +234,10 @@ installApps() {
     sudo pacman -S vim
   fi
 
-  # Nautilus
-  #if prompt "Install Nautilus?"
-  #then
-  #  sudo pacman -S nautilus
-  #fi
-
   # Scrot
   if prompt "Install Scrot?"
   then
     sudo pacman -S scrot
-  fi
-
-  # Vokoscreen
-  if prompt "Install Vokoscreen?"
-  then
-    sudo pacman -S vokoscreen
   fi
 
   # Music
@@ -268,12 +256,6 @@ installApps() {
   if prompt "Install Network manager?"
   then
     sudo pacman -S networkmanager network-manager-applet
-  fi
-
-  # Haskell
-  if prompt "Install Haskell?"
-  then
-    sudo pacman -S ghc cabal-install happy alex
   fi
 }
 
