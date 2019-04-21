@@ -164,10 +164,10 @@ bar {
   strip_workspace_numbers yes
   # i3bar -t enables transparency
   i3bar_command i3bar
-  separator_symbol ":|:"
+  separator_symbol " | "
   tray_padding 3
   colors {
-    separator  $p_dark$tr_l
+    separator  $s_dark$tr_l
     background $p_dark$tr_l
     statusline $p_dark$tr_l
 
