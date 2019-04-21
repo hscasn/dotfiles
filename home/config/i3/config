@@ -24,7 +24,7 @@ gaps outer 0
 
 # Fonts
 #------------------------------------------------------------------------------
-font pango:System San Francisco Regular 10
+font pango:System San Francisco Regular 12
 
 
 # Terminal
@@ -138,16 +138,16 @@ for_window [class=".*"] border pixel 0
 #------------------------------------------------------------------------------
 
 # Primary dark and light, secondary dark and light
-set $p_dark  #273238
+set $p_dark  #000000
 set $p_light #ffffff
 set $s_dark  #394249
-set $s_light #888888
+set $s_light #aaaaaa
 
 # Highlights: dark and light
 set $h_light #ffffff
-set $h_dark  #00abc0
+set $h_dark  #000000
 
-set $p_alert #DB6772
+set $p_alert #FF0266
 
 set $lock_colour 273238
 
@@ -160,7 +160,7 @@ set $tr_h 00
 #------------------------------------------------------------------------------
 bar {
   position top
-	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
   # i3bar -t enables transparency
   i3bar_command i3bar
   separator_symbol ":|:"
@@ -173,8 +173,8 @@ bar {
 #                      BORDER        BACKGROUND     TEXT      INDICATOR CHILD_BORDER
     focused_workspace  $p_dark$tr_l  $h_dark$tr_l   $h_light
     active_workspace   $p_dark$tr_l  $h_dark$tr_l   $h_light
-    inactive_workspace $p_dark$tr_l  $p_dark$tr_l   $p_light
-    urgent_workspace   $p_dark$tr_l  $p_alert$tr_l  $p_light
+    inactive_workspace $p_dark$tr_l  $p_dark$tr_l   $s_light
+    urgent_workspace   $p_dark$tr_l  $p_dark$tr_l   $p_alert
   }
 }
 
@@ -242,26 +242,26 @@ bindsym XF86AudioPrev exec playerctl previous
 # Workspaces
 #------------------------------------------------------------------------------
 ## Names
-set $workspace1  " 1: "
-set $workspace2  " 2: "
-set $workspace3  " 3: "
-set $workspace4  " 4: "
-set $workspace5  " 5: "
-set $workspace6  " 6: "
-set $workspace7  " 7: "
-set $workspace8  " 8: "
-set $workspace9  " 9: "
-set $workspace10 " 10: "
-set $workspace11 " 11: "
-set $workspace12 " 12: "
-set $workspace13 " 13: "
-set $workspace14 " 14: "
-set $workspace15 " 15: "
-set $workspace16 " 16: "
-set $workspace17 " 17: "
-set $workspace18 " 18: "
-set $workspace19 " 19: "
-set $workspace20 " 20: "
+set $workspace1  " [ 1 ] "
+set $workspace2  " [ 2 ] "
+set $workspace3  " [ 3 ] "
+set $workspace4  " [ 4 ] "
+set $workspace5  " [ 5 ] "
+set $workspace6  " [ 6 ] "
+set $workspace7  " [ 7 ] "
+set $workspace8  " [ 8 ] "
+set $workspace9  " [ 9 ] "
+set $workspace10 " [ 10 ] "
+set $workspace11 " [ 11 ] "
+set $workspace12 " [ 12 ] "
+set $workspace13 " [ 13 ] "
+set $workspace14 " [ 14 ] "
+set $workspace15 " [ 15 ] "
+set $workspace16 " [ 16 ] "
+set $workspace17 " [ 17 ] "
+set $workspace18 " [ 18 ] "
+set $workspace19 " [ 19 ] "
+set $workspace20 " [ 20 ] "
 
 # Sometimes Mod2+num will be required for it to work
 set $KP_1 Mod2+87
