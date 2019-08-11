@@ -29,7 +29,7 @@ font pango:System San Francisco Regular 11
 
 # Terminal
 #------------------------------------------------------------------------------
-bindsym $mod+Return exec mate-terminal
+bindsym $mod+Return exec termite
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position

@@ -102,19 +102,12 @@ prompt() {
 }
 
 installApps() {
-  # AUR
-  if prompt "Install AUR?"
-  then
-    sudo pacman -S yaourt &&\
-    yaourt -Syy # Syncing
-  fi
-
   # i3, rofi, and i3blocks
   if prompt "Install i3 and tools?"
   then
-    yaourt -S i3-gaps-next-git rofi &&\
+    yay -S i3-gaps-next-git rofi &&\
     sudo pacman -S dmenu i3lock compton feh &&\
-    yaourt -S i3blocks
+    yay -S i3blocks
   fi
 
   # Essentials
@@ -123,16 +116,10 @@ installApps() {
     sudo pacman -S base-devel wget file abs
   fi
 
-  # Pakku
-  if prompt "Install Pakku?"
-  then
-    yaourt -S pakku
-  fi
-
   # Python
   if prompt "Install Python?"
   then
-    yaourt -S python python-pip
+    yay -S python python-pip
   fi
 
   # Arch Keyring
@@ -150,7 +137,7 @@ installApps() {
   # Telegram
   if prompt "Install Telegram?"
   then
-    yaourt -S telegram-desktop-bin
+    yay -S telegram-desktop-bin
   fi
 
   # ACPI
@@ -177,13 +164,6 @@ installApps() {
     sudo pacman -S lm_sensors
   fi
 
-  # Java
-  if prompt "Install Java?"
-  then
-    sudo pacman -S java-runtime-common java-environment-common &&\
-    yaourt -S jdk-devel jre-devel
-  fi
-
   # APT-VIM
   if prompt "Install APT-VIM?"
   then
@@ -201,25 +181,25 @@ installApps() {
   # Sublime
   if prompt "Install Sublime?"
   then
-    yaourt -S sublime-text-dev
+    yay -S sublime-text-dev
   fi
 
   # VSCode
   if prompt "Install VSCode?"
   then
-    yaourt -S visual-studio-code-bin
+    yay -S visual-studio-code-bin
   fi
 
   # insync
   if prompt "Install insync?"
   then
-    yaourt -S insync
+    yay -S insync
   fi
 
   # VLC
   if prompt "Install VLC?"
   then
-    yaourt -S vlc-git
+    yay -S vlc-git
   fi
 
   # PDF viewer
@@ -243,7 +223,7 @@ installApps() {
   # Music
   if prompt "Install Spotify?"
   then
-    yaourt -S spotify
+    yay -S spotify
   fi
 
   # Docker
