@@ -25,6 +25,7 @@ export PATH=$PATH:/opt/clion/bin
 export PATH=$PATH:/opt/rider/bin
 export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
+export PATH=$PATH:/opt/idea/bin
 
 # Local
 export PATH=$PATH:~/.local/bin
