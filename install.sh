@@ -122,10 +122,16 @@ installApps() {
     yay -S python python-pip
   fi
 
-  # Arch Keyring
-  if prompt "Install Arch Keyring?"
+  # Unipicker
+  if prompt "Install Unipicker?"
   then
-    sudo pacman -S archlinux-keyring
+    yay -S unipicker
+  fi
+
+  # XClip
+  if prompt "Install XClip?"
+  then
+    yay -S xclip
   fi
 
   # Redshift

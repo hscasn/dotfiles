@@ -129,6 +129,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Unipicker
+bindsym $mod+y exec --no-startup-id unipicker --copy --command "rofi -dmenu"
+
 
 #new_window normal 1
 #for_window [class=".*"] title_format "  <span font_size='small'>%title</span>"
