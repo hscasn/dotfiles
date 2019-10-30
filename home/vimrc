@@ -31,7 +31,11 @@ set nu
 " Syntax on
 syntax on
 
+" Airline
+let g:airline_powerline_fonts = 1
+
 " Show whitespaces
+let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '␣'
 set listchars=trail:␣
 
