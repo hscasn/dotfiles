@@ -170,13 +170,7 @@ installApps() {
     sudo pacman -S lm_sensors
   fi
 
-  # APT-VIM
-  if prompt "Install APT-VIM?"
-  then
-    curl -sL https://raw.githubusercontent.com/egalpin/apt-vim/master/install.sh | sh
-  fi
-
-  # node
+  # Node
   if prompt "Install node?"
   then
     sudo pacman -S npm &&\
@@ -247,34 +241,9 @@ installApps() {
 
 # Installs packages for vim
 installVimPackages() {
-  VIMBUNDLE=~/.vim/bundle
-  if [ ! -e $VIMBUNDLE ]
-  then
-    sudo mkdir $VIMBUNDLE
-  fi
-  PATH=$PATH:$HOME/.vimpkg/bin
-
-  # NERD TREE
-  $HOME/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
-  sudo git clone https://github.com/jistr/vim-nerdtree-tabs.git $VIMBUNDLE/vim-nerdtree-tabs
-
-  # Nerd Tree
-  $HOME/.vimpkg/bin/apt-vim install -y https://github.com/scrooloose/nerdtree.git
-
-  # Colour schemes
-  sudo git submodule add https://github.com/flazz/vim-colorschemes.git $VIMBUNDLE/vim-colorschemes
-
-  # Set colors
-  sudo git clone https://github.com/felixhummel/setcolors.vim.git setcolors $VIMBUNDLE/setcolors.vim
-
-  # Indentation
-  sudo git clone https://github.com/Yggdroot/indentLine $VIMBUNDLE/indentLine
-
-  # Syntax
-  sudo git clone https://github.com/sheerun/vim-polyglot $VIMBUNDLE/vim-polyglot
-
-  # Move lines
-  $HOME/.vimpkg/bin/apt-vim install https://github.com/matze/vim-move.git
+  # Vundle
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
 }
 
 # Installing apps

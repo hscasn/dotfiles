@@ -1,11 +1,22 @@
-execute pathogen#infect()
-call pathogen#helptags()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'yggdroot/indentline'
+Plugin 'potatoesmaster/vim-movelines'
+
+" End of Plugins
+call vundle#end()
+filetype plugin indent on
 
 " Tree file navigation
 map <F2> :NERDTreeToggle<CR>
-
-" Theme
-colorscheme monokai
 
 " Show relative line numbers
 set number
