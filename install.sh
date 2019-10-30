@@ -241,6 +241,9 @@ installApps() {
 
 # Installs packages for vim
 installVimPackages() {
+  # Powerline
+  yay -S powerline-fonts
+
   # Vundle
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
