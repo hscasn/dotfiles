@@ -14,7 +14,7 @@ function parse_git_branch() {
 export PS1="\w\[\e[96m\]\$(parse_git_branch)\[\e[0m\]\n> "
 
 # Swapping ESC-CAPS
-setxkbmap -option caps:escape
+setxkbmap -option caps:swapescape
 
 # Default editor
 EDITOR=/usr/bin/vim
