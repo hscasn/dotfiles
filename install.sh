@@ -144,7 +144,7 @@ installApps() {
   # Telegram
   if prompt "Install Telegram?"
   then
-    yay -S telegram-desktop-bin
+    yay -S telegram-desktop
   fi
 
   # ACPI
