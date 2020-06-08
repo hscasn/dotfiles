@@ -1,0 +1,19 @@
+#
+# ~/.bash_profile
+#
+
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/hscasn/.vimpkg/bin"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+function telegram {
+    for dirname in Personal Work; do
+        mkdir -p ~/Telegram/$dirname
+        nohup telegram-desktop -workdir ~/Telegram/$dirname -- %u >/dev/null 2>/dev/null &
+    done
+}
+

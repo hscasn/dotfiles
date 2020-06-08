@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+setxkbmap -option caps:swapescape
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -12,9 +14,6 @@ function parse_git_branch() {
 }
 
 export PS1="\w\[\e[96m\]\$(parse_git_branch)\[\e[0m\]\n> "
-
-# Swapping ESC-CAPS
-setxkbmap -option caps:swapescape
 
 # Default editor
 EDITOR=/usr/bin/vim
@@ -29,6 +28,7 @@ export PATH=$PATH:/opt/rider/bin
 export PATH=$PATH:/opt/pycharm/bin
 export PATH=$PATH:/opt/phpstorm/bin
 export PATH=$PATH:/opt/idea/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # Local
 export PATH=$PATH:~/.local/bin
