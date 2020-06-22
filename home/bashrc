@@ -156,3 +156,11 @@ function getEsStatus() {
 if [ -f ~/.bashrc.work ]; then
     . ~/.bashrc.work
 fi
+
+function telegram {
+    for dirname in Personal Work; do
+        mkdir -p ~/Telegram/$dirname
+        nohup telegram-desktop -workdir ~/Telegram/$dirname -- %u >/dev/null 2>/dev/null &
+    done
+}
+

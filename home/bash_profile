@@ -10,10 +10,3 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/us
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-function telegram {
-    for dirname in Personal Work; do
-        mkdir -p ~/Telegram/$dirname
-        nohup telegram-desktop -workdir ~/Telegram/$dirname -- %u >/dev/null 2>/dev/null &
-    done
-}
-
