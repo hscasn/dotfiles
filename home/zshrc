@@ -1,6 +1,18 @@
 #
-# ~/.bashrc
+# ~/.zshrc
 #
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+zstyle :compinstall filename '$HOME/.zshrc'
+autoload -Uz compinit
+compinit
+
+set -o NO_CASE_GLOB
+set -o NO_CASE_GLOB
+set -o PROMPT_SUBST
 
 setxkbmap -option caps:swapescape
 
@@ -10,10 +22,15 @@ setxkbmap -option caps:swapescape
 alias ls='ls --color=auto'
 
 function parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git symbolic-ref --short HEAD 2>/dev/null
 }
 
-export PS1="\w\[\e[96m\]\$(parse_git_branch)\[\e[0m\]\n> "
+NEWLINE=$'\n%{\r%}'
+LAST_CMD_CODE="%(?.%F{green}√.%F{red}?%?)"
+PROMPT_PWD="%F{cyan}%~%F{white}"
+PROMPT_GIT='%F{yellow}$(parse_git_branch)%F{white}'
+export PROMPT="${LAST_CMD_CODE} ${PROMPT_PWD} ${PROMPT_GIT} ${NEWLINE}> "
+export RPROMPT="%*"
 
 # Default editor
 EDITOR=/usr/bin/vim
@@ -72,7 +89,7 @@ function dsp() { # Push to dir history
     __DIRHISTORY="$(cat ~/.dirstack)"
     local PW=$(pwd)
     for DIR in "${__DIRHISTORY[@]}"; do
-        if [ "${PW}" == "${DIR}" ]; then
+        if [[ "${PW}" == "${DIR}" ]]; then
             return;
         fi
     done
