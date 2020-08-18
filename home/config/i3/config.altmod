@@ -29,7 +29,7 @@ font pango:System San Francisco Regular 11
 
 # Terminal
 #------------------------------------------------------------------------------
-bindsym $mod+Return exec mate-terminal
+bindsym $mod+Return exec termite -e /usr/bin/zsh
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -128,6 +128,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Unipicker
+bindsym $mod+y exec --no-startup-id unipicker --copy --command "rofi -dmenu"
 
 
 #new_window normal 1

@@ -31,22 +31,17 @@ delete() {
 }
 
 
-# Copies a file or directory to a destination
-copy() {
+# Creates a soft link for a file or directory
+soft_link() {
   if [ ! $# = 2 ]
   then
-    echo "Usage for copy function: copy <file> <file>"
+    echo "Usage for soft_link function: soft_link <file> <file>"
     exit 1
   fi
-  if [ -d "$2" ]
-  then
-    cp -r "$1"/* "$2"
-  else
-    cp -r "$1" "$2"
-  fi
+  ln -s "$1" "$2"
   if [ $? = 0 ]
   then
-    echo "  OK - Copied $1 to $2"
+    echo "  OK - Soft linked $1 to $2"
   else
     exit 1
   fi
@@ -58,7 +53,7 @@ installHome() {
   do
     oldFilePath="./home/$file"
     newFilePath="$HOME/.$file"
-    copy "$oldFilePath" "$newFilePath"
+    soft_link "$oldFilePath" "$newFilePath"
   done
 }
 
@@ -108,6 +103,7 @@ installApps() {
     yay -S i3-gaps-next-git rofi &&\
     sudo pacman -S dmenu i3lock compton feh &&\
     yay -S i3blocks
+    yay -S tumbler tumbler-extra-thumbnailers ffmpegthumbnailer
   fi
 
   # Essentials
@@ -143,7 +139,7 @@ installApps() {
   # Telegram
   if prompt "Install Telegram?"
   then
-    yay -S telegram-desktop-bin
+    yay -S telegram-desktop
   fi
 
   # ACPI
