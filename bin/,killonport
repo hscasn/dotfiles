@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+port="${1}"
+if [[ -z "${port}" ]]; then
+    (>&2 echo 'usage: ,killonport <port>')
+    exit 1
+fi
+kill -9 $(lsof -t -i:${port})
