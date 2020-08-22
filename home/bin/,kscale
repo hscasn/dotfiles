@@ -1,0 +1,8 @@
+local PODN=${1}
+local PODR=${2}
+if [ $# != 2 ]; then
+    echo "Usage: kscale <service> <number of replicas>. Eg: kscale event-tracker-v2 0"
+    exit 1
+fi
+echo "Scaling ${PODN} to ${PODR}"
+kubectl scale --replicas=${PODR} deploy ${PODN}

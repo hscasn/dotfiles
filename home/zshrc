@@ -32,6 +32,17 @@ PROMPT_GIT='%F{yellow}$(parse_git_branch)%F{white}'
 export PROMPT="${LAST_CMD_CODE} ${PROMPT_PWD} ${PROMPT_GIT} ${NEWLINE}> "
 export RPROMPT="%*"
 
+# Shortcuts
+function c() { cd "$@" && ls -F }
+alias l="ls"
+alias ld="ls -d"
+alias la="ls -la"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
 # Default editor
 EDITOR=/usr/bin/vim
 
@@ -51,134 +62,16 @@ export PATH=$PATH:$HOME/.cargo/bin
 # Local
 export PATH=$PATH:~/.local/bin
 
-# Dirs
-function c() { # CD + LS
-  cd "$@" && ls -F
-}
-function cd() { # CD recording path
-    builtin cd "$@"
-    dsp
-    sd
-}
-function sd() { # Record path
-    pwd > ~/.lastdir
-}
-function rd() { # Recover path
-    cd "$(cat ~/.lastdir)"
-}
-function ds() { # Show directory stack / pull from dir stack
-    declare -a __DIRHISTORY
-    __DIRHISTORY="$(cat ~/.dirstack)"
-    if [ ${#} -lt 1 ]; then
-        local C=0
-        for DIR in "${__DIRHISTORY[@]}"; do
-            echo -e "\e[96m${C}\e[0m ${DIR}"
-            C=$(( ${C} + 1 ))
-        done
-    elif [ ${1} -ge 0 ] && [ ${1} -lt ${#__DIRHISTORY[@]} ]; then
-        c "${__DIRHISTORY[${1}]}"
-    elif [ ${1} -eq 0 ]; then
-        echo "Stack empty"
-        exit 1
-    else
-        echo "Bad index"
-        exit 1
-    fi
-}
-function dsp() { # Push to dir history
-    declare -a __DIRHISTORY
-    __DIRHISTORY="$(cat ~/.dirstack)"
-    local PW=$(pwd)
-    for DIR in "${__DIRHISTORY[@]}"; do
-        if [[ "${PW}" == "${DIR}" ]]; then
-            return;
-        fi
-    done
-    __DIRHISTORY=("${__DIRHISTORY[@]}" "${PW}")
-    printf "%s\n" "${__DIRHISTORY[@]}" > ~/.dirstack
-}
-function dsr() { # Remove dir history (may remove several, removes all if no args)
-    declare -a __DIRHISTORY
-    __DIRHISTORY="$(cat ~/.dirstack)"
-    if [ ${#} -lt 1 ]; then
-        echo "Not enough arguments"
-        exit 1
-    fi
-    while [ ${#} -gt 0 ]; do
-        unset __DIRHISTORY[${1}]
-        shift
-    done
-    printf "%s\n" "${__DIRHISTORY[@]}" > ~/.dirstack
-}
-
-# Shortcuts
-alias l="ls"
-alias ld="ls -d"
-alias la="ls -la"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-alias ni="npm install"
-alias gd="git pull"
-alias gu="git push"
-alias gc="git commit -m"
-
-# wow!
-function wow() {
-  if [[ $# == 2 ]]; then
-    git add . && git commit -m "$1" && git push origin "$2"
-  else
-    echo "Usage: wow <commit message> <branch>"
-    echo "       wow (will use 'wow' as commit message and push to master)"
-    exit 1
-  fi
-}
-
 # Returning to last dir
 if [ -f ~/.lastdir ]; then
   cd "$(cat ~/.lastdir)"
 fi
-
-setNamespace () { CONTEXT=$(kubectl config view | awk '/current-context/ {print $2}'); kubectl config set-context $CONTEXT --namespace=$1;}
-alias klog="kubectl logs -f"
-alias kdes="kubectl describe pod"
-alias kget="kubectl config get-contexts | grep wisdom"
-alias kuse="kubectl config use-context"
-alias kwatch="watch -n 1 'kubectl get pods'"
-alias kwatchp="watch -n 1 'kubectl get pods | grep -v Running'"
-alias kpod="kubectl get pods"
-alias knode="kubectl get nodes"
-alias kdep="kubectl get deployment"
-function kscale() {
-  local PODN=${1}
-  local PODR=${2}
-  if [ $# != 2 ]; then
-    echo "Usage: kscale <service> <number of replicas>. Eg: kscale event-tracker-v2 0"
-    exit 1
-  fi
-  echo "Scaling ${PODN} to ${PODR}"
-  kubectl scale --replicas=${PODR} deploy ${PODN}
-}
-function kver() {
-  local PODN=${1}
-  for POD in $(kubectl get pods | grep ${PODN} | awk '{print $1}'); do
-    kubectl describe pod ${POD} | grep 'Image:'
-  done
-}
-function getEsStatus() {
-  for pod in $(kubectl get pods | grep elasticsearch-recommendations | awk '{print $1}'); do echo ${pod}; kubectl exec -it ${pod} -- curl local    host:9200/_cat/health; done
+function cd() { # CD recording path
+    builtin cd "$@"
+    ,dirstack_push
+    ,lastdir_save
 }
 
 if [ -f ~/.bashrc.work ]; then
     . ~/.bashrc.work
 fi
-
-function telegram {
-    for dirname in Personal Work; do
-        mkdir -p ~/Telegram/$dirname
-        nohup telegram-desktop -workdir ~/Telegram/$dirname -- %u >/dev/null 2>/dev/null &
-    done
-}
-

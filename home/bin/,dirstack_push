@@ -1,0 +1,13 @@
+declare -a __DIRHISTORY
+__DIRHISTORY="$(cat ~/.dirstack)"
+PW=$(pwd)
+for DIR in ${__DIRHISTORY[@]}; do
+    if [[ "${PW}" == "${DIR}" ]]; then
+        exit
+    fi
+done
+__DIRHISTORY=("${__DIRHISTORY[@]}" "${PW}")
+printf "%s\n" "${__DIRHISTORY[@]}" > ~/.dirstack
+touch ~/.dirstack_tmp
+cat ~/.dirstack | grep . | tail -n 20 > ~/.dirstack_tmp
+cp ~/.dirstack_tmp ~/.dirstack
