@@ -75,3 +75,5 @@ function cd() { # CD recording path
 if [ -f ~/.bashrc.work ]; then
     . ~/.bashrc.work
 fi
+
+cowsay $(fortune)
