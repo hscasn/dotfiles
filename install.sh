@@ -233,6 +233,12 @@ installApps() {
   then
     sudo pacman -S networkmanager network-manager-applet
   fi
+
+  # Cowsay and fortune
+  if prompt "Install Cowsay and Fortune?"
+  then
+    yay -S fortune-mod cowsay
+  fi
 }
 
 # Installs packages for vim
