@@ -61,8 +61,8 @@ bindsym $mod+j workspace prev
 bindsym $mod+semicolon workspace next
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
+#bindsym $mod+Left workspace prev
+#bindsym $mod+Right workspace next
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -83,7 +83,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
