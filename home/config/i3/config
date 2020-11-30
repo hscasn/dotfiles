@@ -20,7 +20,7 @@ gaps outer 0
 # There is another config file under ~/.config/gtk-3.0/settings.ini
 # For better font rendering, use infinality
 
-# For opacity, install compton
+# For opacity, install picom
 
 # Fonts
 #------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ exec_always xrandr --output HDMI-0 --pos 1920x0
 #exec_always xrandr --output DP2 --same-as eDP1
 exec insync start
 exec redshift
-exec compton
+exec picom
 exec nm-applet
 exec NetworkManager
 
