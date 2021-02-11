@@ -14,12 +14,8 @@ set -o NO_CASE_GLOB
 set -o NO_CASE_GLOB
 set -o PROMPT_SUBST
 
-setxkbmap -option caps:swapescape
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
 
 function parse_git_branch() {
     git symbolic-ref --short HEAD 2>/dev/null
@@ -72,8 +68,11 @@ function cd() { # CD recording path
     ,lastdir_save
 }
 
-if [ -f ~/.bashrc.work ]; then
-    . ~/.bashrc.work
+if [ -f ~/.zshrc.work ]; then
+    . ~/.zshrc.work
+fi
+if [ -f ~/.zshrc.home ]; then
+    . ~/.zshrc.home
 fi
 
 cowsay $(fortune)
