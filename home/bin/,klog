@@ -1,1 +1,1 @@
-kubectl logs -f
+kubectl logs -f ${@}
