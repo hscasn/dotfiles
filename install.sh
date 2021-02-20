@@ -101,7 +101,7 @@ installApps() {
   if prompt "Install i3 and tools?"
   then
     yay -S i3-gaps-next-git rofi &&\
-    sudo pacman -S dmenu i3lock compton feh &&\
+    sudo pacman -S dmenu i3lock picom feh &&\
     yay -S i3blocks
     yay -S tumbler tumbler-extra-thumbnailers ffmpegthumbnailer
   fi
