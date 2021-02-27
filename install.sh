@@ -1,4 +1,5 @@
-#!/bin/bash
+#
+/bin/bash
 
 echo "------------------------------"
 echo "To disable Ctrl+Alt+Backspace from killing X11:"
@@ -102,7 +103,7 @@ installApps() {
   then
     yay -S i3-gaps-next-git rofi &&\
     sudo pacman -S dmenu i3lock picom feh &&\
-    yay -S i3blocks
+    yay -S i3blocks i3blocks-contrib sysstat
     yay -S tumbler tumbler-extra-thumbnailers ffmpegthumbnailer
   fi
 
