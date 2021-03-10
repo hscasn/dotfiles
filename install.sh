@@ -38,8 +38,8 @@ soft_link() {
     echo "Usage for soft_link function: soft_link <file> <file>"
     exit 1
   fi
-  rm "$2" 2>/dev/null
-  ln -s "$1" "$2"
+  rm -rf "$2" 2>/dev/null
+  ln -s "$(pwd)/$1" "$2"
   if [ $? = 0 ]
   then
     echo "  OK - Soft linked $1 to $2"
