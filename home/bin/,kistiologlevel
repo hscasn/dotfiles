@@ -1,0 +1,5 @@
+if [ -z "${1}" ] || [ -z "${2}" ]; then
+    (>&2 echo "Usage: ,kistiologlevel <pod name> <level (debug, info, warn, etc)>")
+    exit 1
+fi
+kubectl exec -n application $(,kfpo ${1}) -c istio-proxy -- pilot-agent request POST "logging?rbac=${2}"
