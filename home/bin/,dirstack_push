@@ -1,4 +1,5 @@
 declare -a __DIRHISTORY
+touch ~/.dirstack
 __DIRHISTORY="$(cat ~/.dirstack)"
 PW=$(pwd)
 for DIR in ${__DIRHISTORY[@]}; do
