@@ -1,4 +1,8 @@
-Insync
-autostart
-pulse
-xfce4
+*
+!.gitignore
+!i3
+!picom
+!rofi
+!termite
+!redshift.conf
+

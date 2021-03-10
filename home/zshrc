@@ -76,4 +76,5 @@ if [ -f ~/.zshrc.home ]; then
     . ~/.zshrc.home
 fi
 
+screenfetch
 cowsay $(fortune)
