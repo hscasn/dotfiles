@@ -1,5 +1,4 @@
-#
-/bin/bash
+#!/bin/bash
 
 echo "------------------------------"
 echo "To disable Ctrl+Alt+Backspace from killing X11:"
@@ -39,6 +38,7 @@ soft_link() {
     echo "Usage for soft_link function: soft_link <file> <file>"
     exit 1
   fi
+  rm "$2" 2>/dev/null
   ln -s "$1" "$2"
   if [ $? = 0 ]
   then
@@ -69,17 +69,6 @@ installFonts() {
   fi
 }
 
-# Installs misc files
-installMisc() {
-  sudo cp misc/mirrorlist "/etc/pacman.d/mirrorlist"
-  if [ $? = 0 ]
-  then
-    echo "  OK - Mirror list installed"
-  else
-    exit 1
-  fi
-}
-
 # Prompts the user for y or n - returns 0 for yes, 1 for n
 prompt() {
   if [ ! $# = 1 ]
@@ -98,6 +87,10 @@ prompt() {
 }
 
 installApps() {
+  # yay
+  sudo pacman -Syyu
+  sudo pacman -S yay base-devel
+
   # i3, rofi, and i3blocks
   if prompt "Install i3 and tools?"
   then
@@ -110,7 +103,7 @@ installApps() {
   # Essentials
   if prompt "Install Essentials?"
   then
-    sudo pacman -S base-devel wget file abs
+    sudo pacman -S wget file abs
   fi
 
   # Python
@@ -280,9 +273,3 @@ then
   installFonts
 fi
 
-# Installing misc
-if prompt "Install misc files?"
-then
-  echo "- Installing misc files"
-  installMisc
-fi
