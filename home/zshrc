@@ -45,7 +45,7 @@ EDITOR=/usr/bin/vim
 
 # Exporting path
 export PATH=$PATH:~/.vimpkg/bin
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/.bin
 
 # JetBrains
 export PATH=$PATH:/opt/webstorm/bin
@@ -76,4 +76,5 @@ if [ -f ~/.zshrc.home ]; then
     . ~/.zshrc.home
 fi
 
+screenfetch
 cowsay $(fortune)

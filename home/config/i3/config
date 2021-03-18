@@ -1,7 +1,7 @@
 
 # Mod1 = Alt
 # Mod4 = Windows
-set $mod Mod1
+set $mod Mod4
 
 # Gaps size
 gaps inner 10
