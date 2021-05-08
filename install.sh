@@ -50,7 +50,7 @@ soft_link() {
 
 # Installs the ./home folder
 installHome() {
-  for file in $(ls home)
+  for file in home/*
   do
     oldFilePath="./home/$file"
     newFilePath="$HOME/.$file"
