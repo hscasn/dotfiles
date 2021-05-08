@@ -54,7 +54,16 @@ installHome() {
   do
     oldFilePath="./home/$file"
     newFilePath="$HOME/.$file"
-    soft_link "$oldFilePath" "$newFilePath"
+    if [ "${file}" = "config" ]; then
+        mkdir $HOME/.$file
+        for subfile in home/${file}/*; do
+            oldSubFilePath="$oldFilePath/$subfile"
+            newSubFilePath="$newFilePath/$subfile"
+            soft_link "$oldSubFilePath" "$newSubFilePath"
+        done
+    else
+        soft_link "$oldFilePath" "$newFilePath"
+    fi
   done
 }
 
