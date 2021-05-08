@@ -203,9 +203,8 @@ bindsym $mod+z exec setxkbmap us -variant intl
 
 # STARTUP
 #------------------------------------------------------------------------------
-exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg 
-exec_always xrandr --output LVDS1
-exec_always xrandr -s 1600x900
+exec feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg 
+exec xrandr --output LVDS1 --mode 1600x900 --pos 0x0 --rotate normal
 exec insync start
 exec redshift
 exec picom
