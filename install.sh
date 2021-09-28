@@ -50,21 +50,25 @@ soft_link() {
 
 # Installs the ./home folder
 installHome() {
-  for file in home/*
-  do
-    oldFilePath="./home/$file"
-    newFilePath="$HOME/.$file"
-    if [ "${file}" = "config" ]; then
-        mkdir $HOME/.$file
-        for subfile in home/${file}/*; do
-            oldSubFilePath="$oldFilePath/$subfile"
-            newSubFilePath="$newFilePath/$subfile"
-            soft_link "$oldSubFilePath" "$newSubFilePath"
-        done
-    else
-        soft_link "$oldFilePath" "$newFilePath"
-    fi
-  done
+  (cd home;
+    for file in *
+    do
+      oldFilePath="$file"
+      newFilePath="$HOME/.$file"
+      if [ "${file}" = "config" ]; then
+          mkdir $HOME/.$file 2>/dev/null
+	  (cd "${file}";
+            for subfile in *; do
+                oldSubFilePath="$oldFilePath/$subfile"
+                newSubFilePath="$newFilePath/$subfile"
+                soft_link "$oldSubFilePath" "$newSubFilePath"
+            done
+	  )
+      else
+          soft_link "$oldFilePath" "$newFilePath"
+      fi
+    done
+  )
 }
 
 # Installs the fonts
@@ -112,7 +116,7 @@ installApps() {
   # Essentials
   if prompt "Install Essentials?"
   then
-    sudo pacman -S wget file abs
+    sudo pacman -S wget file
   fi
 
   # Python
