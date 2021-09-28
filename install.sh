@@ -53,19 +53,17 @@ installHome() {
   (cd home;
     for file in *
     do
-      oldFilePath="$file"
       newFilePath="$HOME/.$file"
       if [ "${file}" = "config" ]; then
           mkdir $HOME/.$file 2>/dev/null
 	  (cd "${file}";
             for subfile in *; do
-                oldSubFilePath="$oldFilePath/$subfile"
                 newSubFilePath="$newFilePath/$subfile"
-                soft_link "$oldSubFilePath" "$newSubFilePath"
+                soft_link "$subfile" "$newSubFilePath"
             done
 	  )
       else
-          soft_link "$oldFilePath" "$newFilePath"
+          soft_link "$file" "$newFilePath"
       fi
     done
   )
@@ -117,6 +115,12 @@ installApps() {
   if prompt "Install Essentials?"
   then
     sudo pacman -S wget file
+  fi
+
+  # Essentials
+  if prompt "Install Fish?"
+  then
+    yay -S fish
   fi
 
   # Python
