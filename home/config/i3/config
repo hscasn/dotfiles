@@ -203,7 +203,8 @@ bindsym $mod+z exec setxkbmap us -variant intl
 
 # STARTUP
 #------------------------------------------------------------------------------
-exec_always feh --bg-scale /home/hscasn/Pictures/Wallpaper.jpg 
+exec_always VBoxClient-all
+exec_always feh --bg-scale /home/henry/GDrive/Pictures/Wallpapers/curr.jpg 
 #exec_always xrandr --output DVI-1 --pos 0x0
 #exec_always xrandr --output HDMI-0 --pos 1920x0
 exec_always xrandr --output LVDS --pos 1600x900
