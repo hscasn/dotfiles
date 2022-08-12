@@ -112,12 +112,18 @@ installApps() {
   fi
 
   # Essentials
-  if prompt "Install Essentials?"
+  if prompt "Install essentials (like wget)?"
   then
     sudo pacman -S wget file
   fi
 
-  # Essentials
+  # Termite
+  if prompt "Install Termite?"
+  then
+    yay -S termite
+  fi
+
+  # Fish
   if prompt "Install Fish?"
   then
     yay -S fish
@@ -145,6 +151,12 @@ installApps() {
   if prompt "Install Redshift?"
   then
     sudo pacman -S redshift
+  fi
+
+  # Discord
+  if prompt "Install Discord?"
+  then
+    yay -S discord
   fi
 
   # Telegram
