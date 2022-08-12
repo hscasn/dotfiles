@@ -1,7 +1,6 @@
 #
 # ~/.bash_profile
 #
-setxkbmap -option caps:escape
 
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
