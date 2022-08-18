@@ -102,6 +102,24 @@ installApps() {
   sudo pacman -Syyu
   sudo pacman -S yay base-devel
 
+  # Nvidia drivers
+  if prompt "Install nVidia drivers?"
+  then
+    yay -S nvidia nvidia-libgl lib32-nvidia-libgl
+
+    # Blacklisting nouveau driver
+    sudo bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+
+    # Recompile driver when updating kernel
+    sudo mkdir -p /etc/pacman.d/hooks/ &&\
+    sudo cp nvidia/nvidia.hook /etc/pacman.d/hooks/
+
+    # Optimus
+    yay -S xorg-xrandr
+    sudo mkdir -p /etc/X11/xorg.conf.d/ &&\
+    sudo cp nvidia/10-nvidia-drm-outputclass.conf /etc/X11/xorg.conf.d/
+  fi
+
   # i3, rofi, and i3blocks
   if prompt "Install i3 and tools?"
   then
@@ -139,6 +157,12 @@ installApps() {
   if prompt "Install Unipicker?"
   then
     yay -S unipicker
+  fi
+
+  # Steam
+  if prompt "Install Steam?"
+  then
+    yay -S steam proton
   fi
 
   # XClip
@@ -300,5 +324,12 @@ if prompt "Install fonts?"
 then
   echo "- Installing fonts"
   installFonts
+fi
+
+# Installing keyboard settings
+if prompt "Install Xorg keyboard settings?"
+then
+  echo '- Installing keyboard settings'
+  sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d
 fi
 
