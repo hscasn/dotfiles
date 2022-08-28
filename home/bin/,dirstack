@@ -1,7 +1,0 @@
-declare -a __DIRHISTORY
-__DIRHISTORY="$(cat ~/.dirstack)"
-C=0
-for DIR in ${__DIRHISTORY[@]}; do
-    echo -e "\e[96m${C}\e[0m ${DIR}"
-    C=$(( ${C} + 1 ))
-done

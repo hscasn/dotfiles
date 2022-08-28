@@ -1,4 +1,0 @@
-for pod in $(kubectl get pods | grep elasticsearch-recommendations | awk '{print $1}'); do
-    echo ${pod}
-    kubectl exec -it ${pod} -- curl localhost:9200/_cat/health
-done

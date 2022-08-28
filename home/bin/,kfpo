@@ -1,1 +1,0 @@
-kubectl get pods | grep "${2:-Running}" | grep "${1}" | awk '{ print $1 }' | head -n 1

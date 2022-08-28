@@ -6,7 +6,6 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/hscasn/.vimpkg/bin"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
+export PATH=$PATH:"/home/hsc/.bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/hsc/.vimpkg/bin"
+export PATH=$PATH:/usr/local/go/bin

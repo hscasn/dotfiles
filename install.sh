@@ -55,29 +55,18 @@ installHome() {
     do
       newFilePath="$HOME/.$file"
       if [ "${file}" = "config" ]; then
-          mkdir $HOME/.$file 2>/dev/null
-	  (cd "${file}";
-            for subfile in *; do
-                newSubFilePath="$newFilePath/$subfile"
-                soft_link "$subfile" "$newSubFilePath"
-            done
-	  )
+        mkdir $HOME/.$file 2>/dev/null
+        (cd "${file}";
+                for subfile in *; do
+                    newSubFilePath="$newFilePath/$subfile"
+                    soft_link "$subfile" "$newSubFilePath"
+                done
+        )
       else
-          soft_link "$file" "$newFilePath"
+        soft_link "$file" "$newFilePath"
       fi
     done
   )
-}
-
-# Installs the fonts
-installFonts() {
-  sudo cp -r fonts/* "/usr/share/fonts"
-  if [ $? = 0 ]
-  then
-    echo "  OK - Fonts installed"
-  else
-    exit 1
-  fi
 }
 
 # Prompts the user for y or n - returns 0 for yes, 1 for n
@@ -98,201 +87,20 @@ prompt() {
 }
 
 installApps() {
-  # yay
-  sudo pacman -Syyu
-  sudo pacman -S yay base-devel
-
   # Nvidia drivers
-  if prompt "Install nVidia drivers?"
+  if prompt "Setup laptop nVidia drivers?"
   then
-    yay -S nvidia nvidia-libgl lib32-nvidia-libgl
-
     # Blacklisting nouveau driver
     sudo bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 
-    # Recompile driver when updating kernel
-    sudo mkdir -p /etc/pacman.d/hooks/ &&\
-    sudo cp nvidia/nvidia.hook /etc/pacman.d/hooks/
-
     # Optimus
-    yay -S xorg-xrandr
     sudo mkdir -p /etc/X11/xorg.conf.d/ &&\
     sudo cp nvidia/10-nvidia-drm-outputclass.conf /etc/X11/xorg.conf.d/
-  fi
-
-  # i3, rofi, and i3blocks
-  if prompt "Install i3 and tools?"
-  then
-    yay -S i3-gaps-next-git termite rofi &&\
-    sudo pacman -S dmenu i3lock picom feh &&\
-    yay -S i3blocks i3blocks-contrib sysstat
-    yay -S tumbler tumbler-extra-thumbnailers ffmpegthumbnailer
-  fi
-
-  # Essentials
-  if prompt "Install essentials (like wget)?"
-  then
-    sudo pacman -S wget file
-  fi
-
-  # Termite
-  if prompt "Install Termite?"
-  then
-    yay -S termite
-  fi
-
-  # Fish
-  if prompt "Install Fish?"
-  then
-    yay -S fish
-  fi
-
-  # Python
-  if prompt "Install Python?"
-  then
-    yay -S python python-pip
-  fi
-
-  # Unipicker
-  if prompt "Install Unipicker?"
-  then
-    yay -S unipicker
-  fi
-
-  # Steam
-  if prompt "Install Steam?"
-  then
-    yay -S steam proton
-  fi
-
-  # XClip
-  if prompt "Install XClip?"
-  then
-    yay -S xclip
-  fi
-
-  # Redshift
-  if prompt "Install Redshift?"
-  then
-    sudo pacman -S redshift
-  fi
-
-  # Discord
-  if prompt "Install Discord?"
-  then
-    yay -S discord
-  fi
-
-  # Telegram
-  if prompt "Install Telegram?"
-  then
-    yay -S telegram-desktop
-  fi
-
-  # ACPI
-  if prompt "Install ACPI (for laptop battery)?"
-  then
-    sudo pacman -S acpi
-  fi
-
-  # Transmission
-  if prompt "Install Transmission?"
-  then
-    sudo pacman -S transmission-gtk
-  fi
-
-  # Thunderbird
-  if prompt "Install Thunderbird?"
-  then
-    sudo pacman -S thunderbird
-  fi
-
-  # Sensors
-  if prompt "Install Sensors?"
-  then
-    sudo pacman -S lm_sensors
-  fi
-
-  # Node
-  if prompt "Install node?"
-  then
-    sudo pacman -S npm &&\
-    sudo npm install -g n &&\
-    sudo n latest
-  fi
-
-  # Sublime
-  if prompt "Install Sublime?"
-  then
-    yay -S sublime-text-dev
-  fi
-
-  # VSCode
-  if prompt "Install VSCode?"
-  then
-    yay -S visual-studio-code-bin
-  fi
-
-  # insync
-  if prompt "Install insync?"
-  then
-    yay -S insync
-  fi
-
-  # VLC
-  if prompt "Install VLC?"
-  then
-    yay -S vlc-git
-  fi
-
-  # PDF viewer
-  if prompt "Install PDF viewer?"
-  then
-    sudo pacman -S zathura
-  fi
-
-  # VIM
-  if prompt "Install VIM?"
-  then
-    sudo pacman -S vim
-  fi
-
-  # Scrot
-  if prompt "Install Scrot?"
-  then
-    sudo pacman -S scrot
-  fi
-
-  # Music
-  if prompt "Install Spotify?"
-  then
-    yay -S spotify
-  fi
-
-  # Docker
-  if prompt "Install Docker?"
-  then
-    sudo pacman -S docker
-  fi
-
-  # Network manager
-  if prompt "Install Network manager?"
-  then
-    sudo pacman -S networkmanager network-manager-applet
-  fi
-
-  # Cowsay and fortune
-  if prompt "Install Cowsay and Fortune?"
-  then
-    yay -S fortune-mod cowsay
   fi
 }
 
 # Installs packages for vim
 installVimPackages() {
-  # Powerline
-  yay -S powerline-fonts
-
   # Vundle
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
@@ -318,18 +126,3 @@ then
   echo "- installing vim packages"
   installVimPackages
 fi
-
-# Installing fonts
-if prompt "Install fonts?"
-then
-  echo "- Installing fonts"
-  installFonts
-fi
-
-# Installing keyboard settings
-if prompt "Install Xorg keyboard settings?"
-then
-  echo '- Installing keyboard settings'
-  sudo cp xorg/00-keyboard.conf /etc/X11/xorg.conf.d
-fi
-
